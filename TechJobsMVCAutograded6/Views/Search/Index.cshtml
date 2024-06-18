@@ -18,7 +18,7 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm" required />
         </p>
 
         <input type="submit" value="Search" />
@@ -27,21 +27,42 @@
     <hr />
 
     @* TODO #4 - Loop over the search results to display all job fields. *@
-<table class="job-listing">
-            @foreach(var job in ViewBag.jobs)
-            {
+
+    @if (ViewBag.jobs != null)
+    {
+        @foreach (var job in ViewBag.jobs)
+        {
+            <table class="job-listing">
                 <tr>
-                    <td>
-                        <p>ID: @job.Id</p>
-                        <p>Name: @job.Name</p>
-                        <p>Employer: @job.Employer</p>
-                        <p>Location: @job.Location</p>
-                        <p>Position Type: @job.PositionType</p>
-                        <p>Core Competency: @job.CoreCompetency</p>
-                    </td>
+                    <th>ID: </th>
+                    <td>&nbsp;@job.Id</td>
                 </tr>
-            }
-        </table>
+                <tr>
+                    <th>Name: </th>
+                    <td>&nbsp;@job.Name</td>
+                </tr>
+                <tr>
+                    <th>Employer: </th>
+                    <td>&nbsp;@job.Employer</td>
+                </tr>
+                <tr>
+                    <th>Location: </th>
+                    <td>&nbsp;@job.Location</td>
+                </tr>
+                <tr>
+                    <th>Position Type: </th>
+                    <td>&nbsp;@job.PositionType</td>
+                </tr>
+                <tr>
+                    <th>Core Competency: </th>
+                    <td>&nbsp;@job.CoreCompetency</td>
+                </tr>
+            </table>
+            <br>
+        }
+
+    }
+
 
 
 </div>

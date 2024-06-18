@@ -21,7 +21,7 @@ public class SearchController : Controller
     public IActionResult Results(string searchType, string searchTerm)
     {
         List<Job> jobs = new List<Job>();
-
+        
         if (searchType == "All")
         {
             jobs = JobData.FindAll();
@@ -31,8 +31,9 @@ public class SearchController : Controller
             jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
         }
         ViewBag.jobs = jobs;
+        ViewBag.columns = ListController.ColumnChoices;
 
-        return View();
+        return View("index");
     }
 }
 
